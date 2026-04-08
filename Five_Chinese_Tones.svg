@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 620" width="100%" role="img" aria-labelledby="title desc">
+  <title id="title">Piano Keyboard with Five Chinese Tones</title>
+  <desc id="desc">A one-octave piano keyboard diagram showing Tone 1 high and level at G sharp, Tone 2 rising diagonally from E to F sharp, Tone 3 low at C, Tone 4 falling from the same G sharp starting point as Tone 1, and the neutral tone level at F.</desc>
+  <style>
+    :root{
+      --bg:#F4F2EA;
+      --white:#E8E6DC;
+      --black:#2C2C2A;
+      --text:#5A3816;
+      --gray:#8F8A80;
+      --t:#7A756C;
+      --teal:#3B8BD4;
+      --green:#639922;
+      --amber:#EF9F27;
+      --red:#C94A3D;
+      --purple:#7A5AC7;
+    }
+    svg{background:var(--bg); font-family: Arial, Helvetica, sans-serif;}
+    .white{fill:var(--white); rx:2;}
+    .black{fill:var(--black); rx:2;}
+    .thin{stroke:var(--t); stroke-width:2;}
+.tone3{stroke:var(--teal); stroke-width:4;}
+.tone2{stroke:var(--green); stroke-width:4;}
+.tone1{stroke:var(--amber); stroke-width:3;}
+.toneN{stroke:var(--purple); stroke-width:4;}
+    .lab{font-size:13px; fill:#444;}
+    .maintext{font-size:16px; font-weight:600;}
+    .subtext{font-size:13px;}
+    .c-teal{fill:var(--teal); stroke:var(--teal);}
+    .c-green{fill:var(--green); stroke:var(--green);}
+    .c-amber{fill:#5A3816; stroke:#8F8A80;}
+    .c-red{fill:var(--red); stroke:var(--red);}
+    .c-purple{fill:var(--purple); stroke:var(--purple);}
+    .arrowline{fill:none; stroke-width:2; marker-end:url(#arrow);}
+    .rise{fill:none; stroke:var(--green); stroke-width:2.5; stroke-dasharray:5 3; marker-end:url(#arrow);}
+    .fall{fill:none; stroke:var(--red); stroke-width:3; marker-end:url(#arrow);}
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="35" text-anchor="middle" font-size="22" font-weight="700" fill="#4B4438">Piano Keyboard with Five Chinese Tones</text>
+
+  <line x1="60" y1="100" x2="60" y2="580" stroke="#C6C1B7" stroke-width="1.5"/>
+  <text x="40" y="360" transform="rotate(-90 40 360)" text-anchor="middle" font-size="18" fill="#444">One octave</text>
+
+  <g class="lab">
+    <text x="100" y="555" text-anchor="end">C</text>
+    <text x="100" y="495" text-anchor="end">D</text>
+    <text x="100" y="435" text-anchor="end">E</text>
+    <text x="100" y="375" text-anchor="end">F</text>
+    <text x="100" y="315" text-anchor="end">G</text>
+    <text x="100" y="255" text-anchor="end">A</text>
+    <text x="100" y="195" text-anchor="end">B</text>
+    <text x="100" y="135" text-anchor="end">C</text>
+  </g>
+
+  <rect x="120" y="520" width="200" height="60" class="white tone3"/>
+  <rect x="120" y="460" width="200" height="60" class="white thin"/>
+  <rect x="120" y="400" width="200" height="60" class="white tone2"/>
+  <rect x="120" y="340" width="200" height="60" class="white toneN"/>
+  <rect x="120" y="280" width="200" height="60" class="white thin"/>
+  <rect x="120" y="220" width="200" height="60" class="white thin"/>
+  <rect x="120" y="160" width="200" height="60" class="white thin"/>
+  <rect x="120" y="100" width="200" height="60" class="white thin"/>
+
+  <rect x="120" y="511" width="140" height="18" class="black"/>
+  <rect x="120" y="451" width="140" height="18" class="black"/>
+  <rect x="120" y="331" width="140" height="18" class="black"/>
+  <rect x="120" y="271" width="140" height="18" class="black tone1"/>
+  <rect x="120" y="211" width="140" height="18" class="black"/>
+
+  <line x1="320" y1="280" x2="410" y2="280" class="arrowline c-amber"/>
+  <text x="420" y="286" class="maintext" fill="#5A3816">Tone 1 ("Ahhhh") - High</text>
+
+<!-- tone 2 with vertical rise to F# -->
+<circle cx="365" cy="430" r="5" fill="#639922"/>
+<path d="M365 430 L365 340" class="rise"/>
+<text x="420" y="420" class="maintext" fill="#639922">Tone 2 ("What?") - Rising</text>
+<text x="420" y="438" class="subtext" fill="#639922">Starts here, rises gently</text>
+
+  <line x1="320" y1="370" x2="410" y2="370" class="arrowline c-purple"/>
+  <text x="420" y="364" class="maintext" fill="#7A5AC7">Neutral Tone - Light and Flat</text>
+  <text x="420" y="382" class="subtext" fill="#7A5AC7">Sits around F, shorter and softer</text>
+
+  <line x1="330" y1="550" x2="410" y2="550" class="arrowline c-teal"/>
+  <text x="420" y="555" class="maintext" fill="#0F6D84">Tone 3 ("Mmm") - Low</text>
+
+<!-- Tone 4 with explicit G# start -->
+<circle cx="350" cy="280" r="6" fill="#C94A3D"/>
+<path d="M350 280 L350 520" class="fall"/>
+
+<text x="420" y="234" class="maintext" fill="#C94A3D">Tone 4 ("No!") - Falling</text>
+<text x="420" y="252" class="subtext" fill="#C94A3D">Starts at the same height as Tone 1, then drops sharply</text>
+</svg>
