@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amedeo Chinese — A Joyful New Way to Learn HSK</title>
+  <meta
+    name="description"
+    content="Amedeo Chinese is an upcoming multimedia, multilingual HSK learning platform for curious learners around the world."
+  />
+  <style>
+    :root {
+      --bg-1: #fff7ed;
+      --bg-2: #fdf2f8;
+      --bg-3: #eff6ff;
+      --bg-4: #ecfeff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --white: #ffffff;
+      --red: #ef4444;
+      --orange: #f97316;
+      --yellow: #facc15;
+      --green: #22c55e;
+      --teal: #14b8a6;
+      --blue: #3b82f6;
+      --indigo: #6366f1;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+      --shadow: 0 18px 60px rgba(31, 41, 55, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(251, 146, 60, 0.22), transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(236, 72, 153, 0.22), transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.18), transparent 22%),
+        radial-gradient(circle at 20% 85%, rgba(34, 197, 94, 0.18), transparent 18%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 35%, var(--bg-3) 68%, var(--bg-4));
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 18px 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(14px);
+      border-radius: 999px;
+      padding: 12px 18px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red), var(--orange), var(--yellow), var(--pink));
+      box-shadow: 0 10px 24px rgba(239, 68, 68, 0.28);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      padding: 52px 0 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-xl);
+      padding: 38px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -40px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(249, 115, 22, 0.14), rgba(236, 72, 153, 0.14));
+      color: #9a3412;
+      font-weight: 800;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.3rem, 5vw, 4.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--red), var(--orange), var(--pink), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin: 0 0 24px;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--red), var(--orange), var(--pink));
+      box-shadow: 0 16px 30px rgba(236, 72, 153, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(99, 102, 241, 0.18);
+      color: var(--text);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #374151;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .visual {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .float-card {
+      position: absolute;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .card-main {
+      inset: 24px 24px auto 24px;
+      min-height: 270px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,255,255,0.76)),
+        linear-gradient(135deg, rgba(251,146,60,0.25), rgba(236,72,153,0.2), rgba(59,130,246,0.2));
+    }
+
+    .card-small-1 {
+      left: 0;
+      bottom: 58px;
+      width: 190px;
+    }
+
+    .card-small-2 {
+      right: 0;
+      bottom: 0;
+      width: 220px;
+    }
+
+    .mini-tag {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 7px 11px;
+      border-radius: 999px;
+      margin: 0 8px 10px 0;
+      color: white;
+    }
+
+    .tag-red { background: linear-gradient(135deg, var(--red), var(--orange)); }
+    .tag-blue { background: linear-gradient(135deg, var(--blue), var(--indigo)); }
+    .tag-green { background: linear-gradient(135deg, var(--green), var(--teal)); }
+    .tag-pink { background: linear-gradient(135deg, var(--pink), var(--purple)); }
+
+    .lesson-ui {
+      margin-top: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
+      padding: 18px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .lesson-ui h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .tone-bar {
+      height: 12px;
+      width: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple));
+      margin: 10px 0 16px;
+    }
+
+    .bubble {
+      display: inline-block;
+      margin: 6px 8px 0 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      padding: 26px 0 12px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .stat .num {
+      display: block;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .section {
+      padding: 46px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-title p {
+      margin: 0 auto;
+      color: var(--muted);
+      max-width: 760px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.88);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      min-height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      opacity: 0.18;
+      background: linear-gradient(135deg, var(--blue), var(--pink));
+    }
+
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    }
+
+    .i-1 { background: linear-gradient(135deg, var(--orange), var(--red)); }
+    .i-2 { background: linear-gradient(135deg, var(--blue), var(--indigo)); }
+    .i-3 { background: linear-gradient(135deg, var(--green), var(--teal)); }
+    .i-4 { background: linear-gradient(135deg, var(--pink), var(--purple)); }
+    .i-5 { background: linear-gradient(135deg, var(--yellow), var(--orange)); color: #111827; }
+    .i-6 { background: linear-gradient(135deg, #34d399, #06b6d4); }
+
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .banner {
+      margin-top: 30px;
+      background: linear-gradient(135deg, var(--indigo), var(--purple), var(--pink));
+      color: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(99, 102, 241, 0.25);
+      text-align: center;
+    }
+
+    .banner strong {
+      font-size: 1.15rem;
+    }
+
+    .languages {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .lang {
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 18px;
+      padding: 16px 12px;
+      text-align: center;
+      font-weight: 800;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+    }
+
+    .lang:nth-child(1) { color: #dc2626; }
+    .lang:nth-child(2) { color: #2563eb; }
+    .lang:nth-child(3) { color: #9333ea; }
+    .lang:nth-child(4) { color: #059669; }
+    .lang:nth-child(5) { color: #ea580c; }
+    .lang:nth-child(6) { color: #db2777; }
+
+    .waitlist {
+      margin-top: 28px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(255,255,255,0.9);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .waitlist h3 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+    }
+
+    .waitlist p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .waitlist-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .input {
+      min-width: 280px;
+      min-height: 52px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      padding: 0 18px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .cards,
+      .languages,
+      .stats,
+      .waitlist {
+        grid-template-columns: 1fr;
+      }
+
+      .visual {
+        min-height: 460px;
+      }
+
+      .waitlist-form {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav {
+        border-radius: 24px;
+        padding: 14px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-card {
+        padding: 24px;
+      }
+
+      .card-main,
+      .card-small-1,
+      .card-small-2 {
+        position: static;
+        width: 100%;
+        margin-bottom: 16px;
+      }
+
+      .visual {
+        min-height: auto;
+      }
+
+      .input {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-badge">汉</div>
+          <div>Amedeo Chinese</div>
+        </div>
+        <div class="nav-links">
+          <a href="#platform">Platform</a>
+          <a href="#features">Features</a>
+          <a href="#languages">Languages</a>
+          <a href="#coming-soon">Coming Soon</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-card">
+          <div class="eyebrow">Coming Soon • Multimedia • Multilingual • Joyful</div>
+          <h1>
+            Learn Chinese with
+            <span class="gradient-text">color, sound, stories, and joy.</span>
+          </h1>
+          <p>
+            Amedeo Chinese is an upcoming multimedia, multilingual learning platform designed
+            to make HSK feel lively, memorable, and fun. Short lessons. Real voices. Smart visuals.
+            Clear progress. A happy new world for curious learners.
+          </p>
+
+          <div class="cta-row">
+            <a href="#coming-soon" class="btn btn-primary">Join the waitlist</a>
+            <a href="#features" class="btn btn-secondary">Explore the platform</a>
+          </div>
+
+          <div class="pill-row">
+            <span class="pill">HSK 1–6 Pathways</span>
+            <span class="pill">Audio + Video + Reading</span>
+            <span class="pill">Multilingual Support</span>
+            <span class="pill">Built for motivation</span>
+          </div>
+        </div>
+
+        <div class="visual">
+          <div class="float-card card-main">
+            <span class="mini-tag tag-red">Words</span>
+            <span class="mini-tag tag-blue">Tones</span>
+            <span class="mini-tag tag-green">Stories</span>
+            <span class="mini-tag tag-pink">Games</span>
+
+            <div class="lesson-ui">
+              <h3>Today’s joyful lesson</h3>
+              <div class="tone-bar"></div>
+              <div class="bubble">你好</div>
+              <div class="bubble">谢谢</div>
+              <div class="bubble">朋友</div>
+              <div class="bubble">今天</div>
+              <div class="bubble">一起学吧</div>
+            </div>
+          </div>
+
+          <div class="float-card card-small-1">
+            <strong style="display:block; margin-bottom:8px;">🎧 Listen</strong>
+            <div style="color:var(--muted); line-height:1.6;">
+              Native audio, clear repetition, and playful tone practice.
+            </div>
+          </div>
+
+          <div class="float-card card-small-2">
+            <strong style="display:block; margin-bottom:8px;">🌍 Learn in your language</strong>
+            <div style="color:var(--muted); line-height:1.6;">
+              Chinese explained through a friendly multilingual interface.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats">
+          <div class="stat">
+            <span class="num">6</span>
+            HSK levels
+          </div>
+          <div class="stat">
+            <span class="num">1000+</span>
+            visual learning moments
+          </div>
+          <div class="stat">
+            <span class="num">Audio</span>
+            video, reading, and review
+          </div>
+          <div class="stat">
+            <span class="num">∞</span>
+            curiosity and color
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="platform">
+      <div class="container">
+        <div class="section-title">
+          <h2>The upcoming platform</h2>
+          <p>
+            Built for learners who want structure without boredom, clarity without dryness,
+            and steady progress without losing the thrill of discovery.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="feature-card">
+            <div class="icon i-1">多</div>
+            <h3>Multimedia by design</h3>
+            <p>
+              Words, dialogues, pronunciation, reading, listening, visual memory cues,
+              and interactive review — all connected in one colorful learning flow.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon i-2">语</div>
+            <h3>Multilingual from the start</h3>
+            <p>
+              The platform is being designed to welcome learners from different language
+              backgrounds with clarity, warmth, and confidence.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon i-3">乐</div>
+            <h3>Joyful progression</h3>
+            <p>
+              Short lessons, fast wins, cheerful feedback, and beautifully organized content
+              that keeps motivation alive from day one.
+            </p>
+          </article>
+        </div>
+
+        <div class="banner">
+          <strong>Amedeo Chinese is on the way.</strong>
+          <div style="margin-top:8px; opacity:0.95;">
+            A bright new multilingual space for learning Mandarin with energy, beauty, and momentum.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>What will make it special</h2>
+          <p>
+            The goal is simple: help learners remember more, enjoy more, and come back
+            tomorrow with even more confidence.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="feature-card">
+            <div class="icon i-4">音</div>
+            <h3>Beautiful pronunciation support</h3>
+            <p>
+              Tone-friendly design, audio repetition, and visual cues that make Mandarin
+              feel less intimidating and more musical.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon i-5">字</div>
+            <h3>Characters made approachable</h3>
+            <p>
+              Smart visual presentation helps learners meet Chinese characters with curiosity,
+              not fear.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon i-6">玩</div>
+            <h3>Mini-games and active recall</h3>
+            <p>
+              Review should feel alive. The platform is being built to turn repetition into
+              playful progress.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="languages">
+      <div class="container">
+        <div class="section-title">
+          <h2>A multilingual adventure</h2>
+          <p>
+            Chinese will be taught through a welcoming international interface, opening the
+            door to learners across countries, ages, and learning styles.
+          </p>
+        </div>
+
+        <div class="languages">
+          <div class="lang">English</div>
+          <div class="lang">Français</div>
+          <div class="lang">Deutsch</div>
+          <div class="lang">Italiano</div>
+          <div class="lang">Español</div>
+          <div class="lang">More to come</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="coming-soon">
+      <div class="container">
+        <div class="waitlist">
+          <div>
+            <h3>Be among the first to hear the news</h3>
+            <p>
+              The platform is in preparation now. Leave your email to receive updates,
+              previews, and launch announcements.
+            </p>
+          </div>
+
+          <form class="waitlist-form" action="#" method="post">
+            <input
+              class="input"
+              type="email"
+              name="email"
+              placeholder="Your email address"
+              aria-label="Email address"
+            />
+            <button class="btn btn-primary" type="submit">Notify me</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Amedeo Chinese — upcoming multimedia multilingual platform for joyful HSK learning.
+    </div>
+  </footer>
+</body>
+</html>
